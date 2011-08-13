@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @project.name %> </h1>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
+<p>
+  Add list of employee here, and some other useful buttons
+</p>
+<div id="employee_list">
+	<table>
+		<tr>
+			<th>Employee name </th>
+			<th/>
+		</tr>
+		<% if(@employees != nil)
+				@employees.each do |employee| %>
+		<tr>
+			<td>
+				<%= employee.name %>
+			</td>
+			<td>
+				<%= link_to 'Details', employee %> |
+				<%= link_to 'Remove', :action => 'removeEmployee', :id => @project.id, :employee_id => employee.id %>
+			</td>
+		</tr>	
+		<% 		end 
+			end%>
+	</table>
+</div>
+
+<br/><br/>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'Add employee', addEmployee_project_path(@project) %>
+<%= link_to 'Create timesheet', createTimesheets_project_path(@project) %>

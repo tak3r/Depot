@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @project.name %> </h1>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
+
+<%= form_tag('createdTimesheets') do %>
+	<p>Select start date</p>
+	<p><%= date_select('range','start_date', :order => [:day, :month, :year])%></p> <br/>
+	<p><%= submit_tag 'Create'%></p>
+<% end %>
+
+<%= link_to 'Back', project_path %>

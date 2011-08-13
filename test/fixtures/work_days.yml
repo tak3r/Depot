@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  day: 2011-07-28
+  comment: MyText
+  timesheet_id: 1
+
+two:
+  day: 2011-07-28
+  comment: MyText
+  timesheet_id: 1

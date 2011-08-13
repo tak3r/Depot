@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @employee.name %> </h1>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
+
+<%= form_tag('updateEmployee') do %>
+	<p><%= collection_select(:employee, :project_id, @projects, :id, :name, :prompt => true) %></p>
+	<p><%= submit_tag 'Save'%></p>
+<% end %>
+
+<br/><br/>
+<%= link_to 'Back', employee_path %>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Depot</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<% @page_title || "Depot application" %>
+		</div>
+		<div id="main-menu">
+			<ul>
+				<li class ="first"><%= link_to 'Home', projects_path, { :id => 'main-menu1', :accesskey => '1', :title => 'Projects'}%></li>
+				<li><%= link_to 'Employee', employees_path, { :id => 'main-menu2', :accesskey => '2', :title => 'Employee'}%></li>
+			</ul>
+		</div>
+		<div id="content">
+			<div id="left">
+				<%= yield %>
+			</div>
+		</div>
+		<div id="footer">
+			<p>Copyright &copy; 2011</p>
+		</div>
+	</div>
+</body>
+</html>

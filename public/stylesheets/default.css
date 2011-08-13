@@ -1,0 +1,15 @@
+
+/** BASIC */
+
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #004784
+}
+
+a:link {
+	color: #004784
+}
+
+a:hover {
+	text-decoration: none;
+}

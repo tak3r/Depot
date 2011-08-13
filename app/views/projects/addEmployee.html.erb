@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @project.name %> </h1>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
+
+<p> Add employee code here </p>
+<%= form_tag('updateEmployee') do %>
+	<table>
+		<% @employees.each do |employee| %>
+		<tr>
+			<td>
+				<% if(employee.project_id == @project.id) %>
+			   		<%= check_box_tag employee.id, 'selected', true %>
+				<% else %>
+					<%= check_box_tag employee.id, 'selected' %>
+				<% end %>
+			</td>
+			<td>
+				<%= link_to employee.name, employee %> <br/>
+			</td>
+		</tr>	
+		<% end %>
+	</table>
+	<p><%= submit_tag 'Save'%></p>
+<% end%>
+
+<%= link_to 'Back', project_path %>

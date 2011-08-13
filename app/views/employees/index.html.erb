@@ -1,0 +1,39 @@
+<div id="employee_list">
+	<h1>Listing employees</h1>
+	<div class="hr1">
+		<hr/>
+	</div>
+	<br/><br/>
+	<table>
+  		<tr>
+    		<th>Full name</th>
+    		<th>Date of birth</th>
+    		<th>Salary</th>
+    		<th>Job</th>
+    		<th>Notes</th>
+    		<th></th>
+  		</tr>
+
+		<% @employees.each do |employee| %>
+  		<tr>
+    		<td><%= link_to employee.name, employee %></td>
+    		<td><%= employee.dob %></td>
+    		<td><%= number_to_currency(employee.salary) %></td>
+    		<td><%= employee.job %></td>
+    		<td><%= employee.notes %></td>
+    		<td>
+    			<%= link_to 'Edit', edit_employee_path(employee) %><br/>
+    			<%= link_to 'Destroy', employee, 
+							:confirm => 'Are you sure?', 
+							:method => :delete %>
+			</td>
+			<td>
+				<%= link_to 'Add to project', addToProject_employee_path(employee) %>
+			</td>
+  		</tr>
+		<% end %>
+	</table>
+</div>
+<br />
+
+<%= link_to 'New Employee', new_employee_path %>

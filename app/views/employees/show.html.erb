@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div id="employee_details">
+<h1>Employee Details</h1>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
+
+<table>
+	<tr class="odd">
+		<td class="column1">Name:</td>
+  		<td><%= @employee. name %></td>
+	</tr>
+
+	<tr>
+  		<td class="column1">Date of birth:</td>
+  		<td><%= @employee.dob %></td>
+	</tr>
+
+	<tr class="odd">
+  		<td class="column1">Salary:</td>
+  		<td><%= number_to_currency(@employee.salary) %></td>
+	</tr>
+
+	<tr>
+  		<td class="column1">Job:</td>
+  		<td><%= @employee.job %></td>
+	</tr>
+
+	<tr class="odd">
+  		<td class="column1">Notes:</td>
+  		<td><%= @employee.notes %></td>
+	</tr>
+	
+	<% if @project != nil %>
+	<tr>
+		<td class="column1">Currently work at: </td>
+		<td> <%= @project.name %> </td>
+	</tr>
+	<% end%>
+	<tr>
+		<td colspan='2'>
+		<%= link_to 'Edit', edit_employee_path(@employee) %> |
+		<%= link_to 'Back', employees_path %></td>
+	</tr>
+</table>
+
+
+</div>

@@ -1,0 +1,25 @@
+<div id="employee_list">
+	<h1>Listing projects</h1>
+	<div class="hr1">
+	<hr/>
+</div>
+	<br/><br/>
+	<table>
+  		<tr>
+    		<th>Name</th>
+    		<th></th>
+  		</tr>
+
+		<% @projects.each do |project| %>
+  		<tr>
+    		<td> <%= project.name %></td>
+    		<td>
+	    	<%= link_to 'Show details', project %>
+    		</td>
+  		</tr>
+		<% end %>
+	</table>
+</div>
+<br />
+
+<%= link_to 'New Project', new_project_path %>
