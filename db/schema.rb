@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110728134849) do
+ActiveRecord::Schema.define(:version => 20110815143152) do
 
   create_table "employees", :force => true do |t|
     t.string   "name"
@@ -30,10 +30,18 @@ ActiveRecord::Schema.define(:version => 20110728134849) do
     t.datetime "updated_at"
   end
 
-  create_table "timesheets", :force => true do |t|
-    t.integer  "employee_id"
+  create_table "summaries", :force => true do |t|
+    t.integer  "timesheet_id"
+    t.string   "cached_content"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "timesheets", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.date     "start_date"
   end
 
   create_table "work_days", :force => true do |t|
@@ -42,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110728134849) do
     t.integer  "timesheet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "employee_id"
   end
 
 end

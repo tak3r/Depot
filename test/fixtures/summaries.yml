@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  timesheet_id: 1
+  cached_content: MyString
+
+two:
+  timesheet_id: 1
+  cached_content: MyString

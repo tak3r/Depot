@@ -25,9 +25,7 @@
     			<%= link_to 'Edit', edit_employee_path(employee) %><br/>
     			<%= link_to 'Destroy', employee, 
 							:confirm => 'Are you sure?', 
-							:method => :delete %>
-			</td>
-			<td>
+							:method => :delete %><br/>
 				<%= link_to 'Add to project', addToProject_employee_path(employee) %>
 			</td>
   		</tr>
@@ -37,3 +35,4 @@
 <br />
 
 <%= link_to 'New Employee', new_employee_path %>
+<p><%= will_paginate @employees %></p>

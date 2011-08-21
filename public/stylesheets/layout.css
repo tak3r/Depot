@@ -95,7 +95,7 @@ html>body #wrapper {
 
 #main-menu {
 	margin: 0px 0px 30px 0px;
-	background: #4F7383 url(images/homepage06.gif) no-repeat right top;
+	background: #4F7383 url(../images/homepage06.gif) no-repeat right top;
 	text-transform: uppercase;
 }
 
@@ -103,7 +103,7 @@ html>body #wrapper {
 	height: 28px;
 	margin: 0px;
 	padding: 11px 0px 0px 7px;
-	background: transparent url(images/homepage02.gif) no-repeat left top;
+	background: transparent url(../images/homepage02.gif) no-repeat left top;
 	list-style: none;
 }
 
@@ -113,7 +113,7 @@ html>body #wrapper {
 
 #main-menu a {
 	padding: 0px 8px 0px 15px;
-	background: transparent url(images/homepage03.gif) no-repeat left center;
+	background: transparent url(../images/homepage03.gif) no-repeat left center;
 	text-decoration: none;
 	font-weight: bold;
 	color: #FFFFFF;

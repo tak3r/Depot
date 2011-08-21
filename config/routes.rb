@@ -3,14 +3,23 @@ Depot::Application.routes.draw do
     member do
       get 'addEmployee'
       post 'updateEmployee'
-      get 'removeEmployee'
-      get 'createTimesheets'
-      post 'createdTimesheets'
-      get 'createWeeklyTimesheet'
+      get 'removeEmployee'      
     end
   end
 
-  resources :timesheets
+  resources :projects do
+    member do
+      post 'create_timesheet'
+      get 'create_weekly_timesheet'
+      post 'created_weekly_timesheet'
+    end
+  end
+  
+  resources :timesheets do
+     member do
+       get 'show_summary'
+     end
+  end
 
   resources :work_days
 

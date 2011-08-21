@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	function PrintContent(){
+		var table = document.getElementById('timesheet');
+		var windowObject = window.open('', "TrackHistoryData",
+		"width=740, height=325, top=200, left=250, toolbars=no, scrollbars=yes, status=no, resizable=no");
+		
+		var styleObj = "<link type='text/css' rel='stylesheet' href='/stylesheets/print.css' media='print'>";
+		windowObject.document.writeln(styleObj);
+		styleObj = "<link type='text/css' rel='stylesheet' href='/stylesheets/print.css' media='screen'>";
+		windowObject.document.writeln(styleObj);
+		
+		windowObject.document.writeln(table.innerHTML);
+		windowObject.document.close();
+		windowObject.focus();
+		windowObject.print();
+		windowObject.close();
+	}
+</script>
+
+<%= @summary.cached_content.html_safe %>
+<br/>
+<p><%= button_to_function "Print", "PrintContent();" %></p>
+<%= link_to 'Back', { :action => 'index', :project_id => @project.id } %>

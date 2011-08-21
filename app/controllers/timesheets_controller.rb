@@ -2,8 +2,11 @@ class TimesheetsController < ApplicationController
   # GET /timesheets
   # GET /timesheets.xml
   def index
-    @timesheets = Timesheet.all
-
+    if params[:project_id]
+      @timesheets = Timesheet.find_all_by_project_id(params[:project_id])
+      @project = Project.find(params[:project_id])
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @timesheets }
@@ -14,7 +17,8 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/1.xml
   def show
     @timesheet = Timesheet.find(params[:id])
-
+    @project = Project.find(@timesheet.project_id)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @timesheet }
@@ -40,15 +44,13 @@ class TimesheetsController < ApplicationController
   # POST /timesheets
   # POST /timesheets.xml
   def create
-    @timesheet = Timesheet.new(params[:timesheet])
-
     respond_to do |format|
-      if @timesheet.save
-        format.html { redirect_to(@timesheet, :notice => 'Timesheet was successfully created.') }
-        format.xml  { render :xml => @timesheet, :status => :created, :location => @timesheet }
+      if params[:project]
+        format.html { redirect_to(:action => "index", :project_id => params[:project][:id])}
+        format.xml { render :xml => @timesheets }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
+        format.html { redirect_to(:action => "index")}
+        format.xml { render :xml => @timesheets }
       end
     end
   end
@@ -73,11 +75,22 @@ class TimesheetsController < ApplicationController
   # DELETE /timesheets/1.xml
   def destroy
     @timesheet = Timesheet.find(params[:id])
+    @project = Project.find(@timesheet.project_id)
     @timesheet.destroy
 
     respond_to do |format|
-      format.html { redirect_to(timesheets_url) }
+      format.html { redirect_to(:action => "index", :project_id => @project.id) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def show_summary
+    @summary = Summary.find_by_timesheet_id(params[:id])
+    @project = Project.find(Timesheet.find(params[:id]).project_id)
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @summary}
     end
   end
 end

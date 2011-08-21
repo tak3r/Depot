@@ -1,14 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1> <%= @project.name %> </h1>
-<div class="hr1">
-	<hr/>
-</div>
-<br/><br/>
-
 <div id='timesheet'>
 <h2>Time sheet summary</h2>
-<p>Start Date : <%= @timesheet.start_date.strftime("%d %B %Y") %></p>
+<p><%= project.name %></p>
+<p>Start Date : <%= timesheet.start_date.strftime("%d %B %Y") %></p>
 
 	<table>
 		<tr>
@@ -25,7 +18,7 @@
 			<th class="middle"></th>
 			<th class="middle"></th>
 				<% (0..6).each do |n| 
-					current_date =  @timesheet.start_date + n %>
+					current_date =  timesheet.start_date + n %>
 			<th> <%= current_date.strftime("%d")%> </th>
 				<% end %>
 			<th class="middle"></th>
@@ -37,7 +30,7 @@
 			<th class="bottom"></th>
 			<th class="bottom"></th>
 				<% (0..6).each do |n| 
-					current_date =  @timesheet.start_date + n %>
+					current_date =  timesheet.start_date + n %>
 			<th> <%= current_date.strftime("%a")%> </th>
 				<% end %>
 			<th class="bottom"></th>
@@ -47,15 +40,13 @@
 		<%	counter = 1
 		   	grand_total = 0
 			employee_ids = Array.new
-			@timesheet.work_days.each do |work_day|
+			timesheet.work_days.each do |work_day|
 				employee_ids.push(work_day.employee_id)
 			end
 		    
 			employee_ids = employee_ids.uniq
-		    logger.debug "employee count: #{employee_ids.length}"
 		   
 		    employee_ids.each do |id|
-				logger.debug "employee id: #{id}"
 			 	employee = Employee.find(id)
 			 	tot_day = 0 %>
 		<tr>
@@ -63,8 +54,8 @@
 			<td><%= employee.name %></td>
 			<td><%= employee.job %></td>
 				<% (0..6).each do |n| 
-					current_date = @timesheet.start_date + n
-					if @timesheet.work_days.find_by_employee_id_and_day(employee.id, current_date) != nil
+					current_date = timesheet.start_date + n
+					if timesheet.work_days.find_by_employee_id_and_day(employee.id, current_date) != nil
 						tot_day += 1 %>
 			<td class='center-align'>1</td>
 					<% else	%>
@@ -84,7 +75,3 @@
 		</tr>
 	</table>
 </div>
-
-<br/><br/>
-<%= link_to 'Back', { :action => 'index', :project_id => @project.id } %> |
-<%= link_to 'Summary', show_summary_timesheet_path %>

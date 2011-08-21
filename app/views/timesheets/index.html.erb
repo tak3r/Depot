@@ -1,23 +1,32 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Listing timesheets</h1>
 
-<table>
-  <tr>
-    <th>Employee</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
 
-<% @timesheets.each do |timesheet| %>
-  <tr>
-    <td><%= timesheet.employee_id %></td>
-    <td><%= link_to 'Show', timesheet %></td>
-    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
-    <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<%= form_tag('/timesheets') do %>
+	<p>Project name <%= collection_select(:project, :id, Project.all, :id, :name, :prompt => true) %>
+	<%= submit_tag 'Search'%></p>
 <% end %>
+
+<% if @timesheets != nil %>
+<h2> Timesheets for <%= link_to @project.name, @project %> </h2>
+<table>
+	<% @timesheets.each do |timesheet| %>
+	<tr>
+		<td><%= timesheet.start_date.strftime("%d %B %Y") %></td>
+		<td><%= link_to 'Show', :action => "show_summary", :id => timesheet.id %> |
+			<%= link_to 'Destroy', timesheet, 
+						:confirm => 'Are you sure?', 
+						:method => :delete %>
+		</td>
+	</tr>
+	<% end %>
 </table>
+<% end%>
 
-<br />
+<br/><br/>
 
-<%= link_to 'New Timesheet', new_timesheet_path %>

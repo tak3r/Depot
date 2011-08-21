@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
   # GET /projects
   # GET /projects.xml
   def index
@@ -133,35 +134,68 @@ class ProjectsController < ApplicationController
     end
   end
   
-  # GET /projects/1/createTimesheets
-  def createTimesheets
-    logger.debug 'Create timesheet'
-    @project = Project.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @project }
-    end
-  end
-  
-  def createdTimesheets
-    @project = Project.find(params[:id])
+  def create_timesheet
     @start_date = Date.civil(params[:range][:"start_date(1i)"].to_i, params[:range][:"start_date(2i)"].to_i, params[:range][:"start_date(3i)"].to_i)
     
-    logger.debug "start date is #{@start_date.to_s}"
+    logger.debug "start date is #{@start_date}"
     respond_to do |format|
-      format.html { redirect_to :action => 'createWeeklyTimesheet', :start_date => @start_date}
+      format.html { redirect_to :action => 'create_weekly_timesheet', :start_date => @start_date}
       format.xml { render :xml => @porject, :status => :createWeeklyTimesheet, :location => @project}
     end
   end
   
-  def createWeeklyTimesheet
+  # GET projects/1/create_weekly_timesheet
+  def create_weekly_timesheet
     @project = Project.find(params[:id])
-    @start_date = Date.strptime(params[:start_date], "%Y-%m-%d")
-    @employees = Employee.find_all_by_project_id(params[:id])
+    
+    if params[:start_date]
+      @start_date = Date.strptime(params[:start_date], "%Y-%m-%d")
+      @employees = Employee.find_all_by_project_id(params[:id])
+    end
     
     respond_to do |format|
       format.html
       format.xml  { render :xml => @project }
+    end
+  end
+  
+  # POST projects/1/created_weekly_timesheet
+  def created_weekly_timesheet
+    @project = Project.find(params[:id])
+    @employees = Employee.find_all_by_project_id(params[:id])
+    
+    @start_date = Date.strptime(params[:start_date], "%Y-%m-%d")
+    
+    @timesheet = Timesheet.new( :project_id => @project.id,
+                                :start_date => @start_date)
+    if !@timesheet.save
+      respond_to do |format|
+          format.html { redirect_to :action => 'create_weekly_timesheet', :start_date => @start_date, :notice => "Failed to create timesheet"}
+          format.xml { render :xml => @porject.errors, :status => :unsuccessful_create_timesheet}
+      end
+    end
+    
+    @employees.each do |employee|                                
+      (0..6).each do |n|
+        current_date = @start_date + n
+        if params[employee.id.to_s + ":" + current_date.to_s] == 'selected'
+          logger.debug "Created work day for #{employee.name}"
+          work_day = WorkDay.new(:timesheet_id => @timesheet.id,
+                                  :employee_id => employee.id,
+                                  :day => current_date)
+          work_day.save
+        end
+      end
+    end
+    
+    summary = Summary.new( :timesheet_id => @timesheet.id)
+    summary.write_cached(@timesheet, @project)
+    
+    logger.debug 'Create time sheet'
+    
+    respond_to do |format|
+        format.html { redirect_to :controller => "timesheets", :action => "show_summary", :id => @timesheet.id }
+        format.xml  { render :xml => @timesheet.summary }
     end
   end
 end

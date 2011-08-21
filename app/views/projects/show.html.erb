@@ -33,5 +33,6 @@
 <br/><br/>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %> |
-<%= link_to 'Add employee', addEmployee_project_path(@project) %>
-<%= link_to 'Create timesheet', createTimesheets_project_path(@project) %>
+<%= link_to 'Add employee', addEmployee_project_path(@project) %> |
+<%= link_to 'Create timesheet', create_weekly_timesheet_project_path(@project) %> |
+<%= link_to 'Timesheet history', { :controller => 'timesheets', :action => 'index', :project_id => @project.id } %>

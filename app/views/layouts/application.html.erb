@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Depot</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "depot.css", "default.css", "layout.css" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
@@ -15,6 +15,7 @@
 			<ul>
 				<li class ="first"><%= link_to 'Home', projects_path, { :id => 'main-menu1', :accesskey => '1', :title => 'Projects'}%></li>
 				<li><%= link_to 'Employee', employees_path, { :id => 'main-menu2', :accesskey => '2', :title => 'Employee'}%></li>
+				<li><%= link_to 'Timesheets', timesheets_path, { :id => 'main_menu3', :accesskey => '3', :title => 'Timesheet'}%></li>
 			</ul>
 		</div>
 		<div id="content">

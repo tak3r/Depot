@@ -1,4 +1,6 @@
 class Timesheet < ActiveRecord::Base
-  belongs_to :employee
+  validates :project_id, :start_date, :presence => true
+  belongs_to :project
   has_many :work_days, :dependent => :destroy
+  has_one :summaries, :dependent => :destroy
 end
