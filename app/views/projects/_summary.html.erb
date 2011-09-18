@@ -1,17 +1,17 @@
 <div id='timesheet'>
-<h2>Time sheet summary</h2>
+<h2><%= t('.title')%></h2>
 <p><%= project.name %></p>
-<p>Start Date : <%= timesheet.start_date.strftime("%d %B %Y") %></p>
+<p><%= t('.start_date')%> : <%= timesheet.start_date.strftime("%d %B %Y") %></p>
 
 	<table>
 		<tr>
 			<th class="top">No.</th>
-			<th class="top">Name</th>
-			<th class="top">Job</th>
-			<th colspan='7'>Timesheet</th>
-			<th class="top">Total day</th>
-			<th class="top">Salary</th>
-			<th class="top">Total salary</th>
+			<th class="top"><%= t('.name')%></th>
+			<th class="top"><%= t('.job')%></th>
+			<th colspan='7'><%= t('.timesheet')%></th>
+			<th class="top"><%= t('.total_day')%></th>
+			<th class="top"><%= t('.salary')%></th>
+			<th class="top"><%= t('.total_salary')%></th>
 		</tr>
 		<tr>
 			<th class="middle"></th>
@@ -70,7 +70,7 @@
 				counter += 1
 			end %>
 		<tr>
-			<td class='footer' colspan='12' style='text-align:right;'>Total</td>
+			<td class='footer' colspan='12' style='text-align:right;'><%= t('.total')%></td>
 			<td class='footer'><%= number_to_currency(grand_total)%></td>
 		</tr>
 	</table>

@@ -30,7 +30,11 @@ class EmployeesController < ApplicationController
   # GET /employees/new.xml
   def new
     @employee = Employee.new
-
+    
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+    end
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @employee }
@@ -47,6 +51,10 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(params[:employee])
 
+    if params[:project_id]
+      @employee.project_id = params[:project_id]
+    end
+    
     respond_to do |format|
       if @employee.save
         format.html { redirect_to(@employee, :notice => 'Employee was successfully created.') }
@@ -86,8 +94,8 @@ class EmployeesController < ApplicationController
     end
   end
   
-  # GET /employees/1/addToProject
-  def addToProject
+  # GET /employees/1/add_to_project
+  def add_to_project
     @employee = Employee.find(params[:id])
     @projects = Project.all
     
@@ -97,8 +105,8 @@ class EmployeesController < ApplicationController
     end
   end
   
-  # POST /employees/1/updateEmployee  
-  def updateEmployee
+  # POST /employees/1/update_employee  
+  def update_employee
     @employee = Employee.find(params[:id])
     
     logger.debug "project id is #{params['employee']['project_id']}"

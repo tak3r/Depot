@@ -34,8 +34,8 @@
 </script>
 
 <div id='timesheet'>
-	<h2>Time sheet</h2>
-	<p>Start Date : <%= @start_date.strftime("%d %B %Y") %></p>
+	<h2><%= t('.title')%></h2>
+	<p><%= t('.start_date')%> : <%= @start_date.strftime("%d %B %Y") %></p>
 
     <% posts = 'created_weekly_timesheet' 
       if @timesheet != nil
@@ -47,12 +47,12 @@
 		<table>
 			<tr>
 				<th class="top">No.</th>
-				<th class="top">Name</th>
-				<th class="top">Job</th>
-				<th colspan='7'>Timesheet</th>
-				<th class="top">Total day</th>
-				<th class="top">Salary</th>
-				<th class="top">Total salary</th>
+				<th class="top"><%= t('.name')%></th>
+				<th class="top"><%= t('.job')%></th>
+				<th colspan='7'><%= t('.timesheet')%></th>
+				<th class="top"><%= t('.total_day')%></th>
+				<th class="top"><%= t('.salary')%></th>
+				<th class="top"><%= t('.total_salary')%></th>
 			</tr>
 			<tr>
 				<th class="middle"></th>
@@ -100,7 +100,7 @@
 						 end %>
 					<td class='center-align'><%= text_field_tag employee.id.to_s + ":tot_day", tot_day , { :readonly => true }%></td>
 					<td class='center-align'><%= number_to_currency(employee.salary) %></td>
-					<td class='center-align'>$<%= text_field_tag employee.id.to_s + ":tot_sal", number_to_currency(employee.salary * tot_day, :unit => ""), { :readonly => true }%></td>
+					<td class='center-align'><%= t('.currency')%><%= text_field_tag employee.id.to_s + ":tot_sal", number_to_currency(employee.salary * tot_day, :unit => ""), { :readonly => true }%></td>
 				</tr>
 				<%  	grand_total += employee.salary * tot_day		
 						counter += 1
@@ -123,21 +123,21 @@
 					<% end %>
 					<td class='center-align'><%= text_field_tag employee.id.to_s + ":tot_day", 0 , { :readonly => true }%></td>
 					<td class='center-align'><%= number_to_currency(employee.salary) %></td>
-					<td class='center-align'>$<%= text_field_tag employee.id.to_s + ":tot_sal", 0, { :readonly => true }%></td>
+					<td class='center-align'><%= t('.currency')%><%= text_field_tag employee.id.to_s + ":tot_sal", 0, { :readonly => true }%></td>
 				</tr>
 				<%		counter += 1
 					end %>
 				<tr>
-					<td class='footer' colspan='12' style='text-align:right;'>Total</td>
-					<td class='footer'>$<%= text_field_tag "grand_total", 0, { :readonly => true }%>
+					<td class='footer' colspan='12' style='text-align:right;'><Total><%= t('.total')%></td>
+					<td class='footer'><%= t('.currency')%><%= text_field_tag "grand_total", 0, { :readonly => true }%>
 				</tr>
 				<%  end %>
 		</table>
 		<br/>
 			<% if @timesheet != nil %>
-		    	<p><%= submit_tag 'Edit'%></p>
+		    	<p><%= submit_tag t('.edit')%></p>
 			<% else %>
-				<p><%= submit_tag 'Create'%></p>
+				<p><%= submit_tag t('.submit')%></p>
 			<% end %>
 		<% end %>
 	</div>

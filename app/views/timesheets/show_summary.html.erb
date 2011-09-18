@@ -20,4 +20,4 @@
 <%= @summary.cached_content.html_safe %>
 <br/>
 <p><%= button_to_function "Print", "PrintContent();" %></p>
-<%= link_to 'Back', { :action => 'index', :project_id => @project.id } %>
+<%= link_to t('.back'), { :action => 'index', :project_id => @project.id } %>

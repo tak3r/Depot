@@ -6,8 +6,7 @@
 </div>
 <br/><br/>
 
-<p> Add employee code here </p>
-<%= form_tag('updateEmployee') do %>
+<%= form_tag('update_employee') do %>
 	<table>
 		<% @employees.each do |employee| %>
 		<tr>
@@ -24,7 +23,9 @@
 		</tr>	
 		<% end %>
 	</table>
+	<p><%= will_paginate @employees %></p>
 	<p><%= submit_tag 'Save'%></p>
 <% end%>
 
-<%= link_to 'Back', project_path %>
+<%= link_to t('.back'), project_path %> |
+<%= link_to t('.new'), { :controller => 'employees', :action => 'new', :project_id => @project.id } %>

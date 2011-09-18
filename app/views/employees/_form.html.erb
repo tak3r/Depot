@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
+  <% if @project != nil %>
+  <%= hidden_field_tag :project_id, @project.id %>
+  <% end %>
+  
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, t('.name') %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.date_select :dob, :start_year => Time.now.year - 70 %>
+    <%= f.label :dob, t('.dob') %><br />
+    <%= f.date_select :dob, :start_year => Time.now.year - 70, :order => [:day,:month,:year] %>
   </div>
   <div class="field">
-    <%= f.label :salary %><br />
+    <%= f.label :salary, t('.salary') %><br />
     <%= f.text_field :salary %>
   </div>
   <div class="field">
-    <%= f.label :job %><br />
+    <%= f.label :job, t('.job') %><br />
     <%= f.text_field :job %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br />
+    <%= f.label :notes, t('.notes') %><br />
     <%= f.text_area :notes, :rows => 6 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('.submit')%>
   </div>
 <% end %>

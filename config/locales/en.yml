@@ -2,4 +2,137 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  number:
+      currency:
+          format:
+              unit:     "$"
+              precision: 2
+              separator: "."
+              delimiter: ","
+              format:   "%u %n"
+  date:
+      formats:
+          default:      ""
+          long:         ""
+          short:        ""
+      order:            [:day, :month, :year]
+  layouts:
+      application:
+          home:         "Home"
+          employee:     "Employees"
+          timesheet:    "Timesheets"
+          edit:         "Edit"
+          destroy:      "Delete"
+  employees:
+      index:
+          title:        "Listing employees"
+          name:         "Full name"
+          dob:          "Date of birth"
+          salary:       "Salary"
+          job:          "Job"
+          notes:        "Notes"
+          edit:         "Edit"
+          destroy:      "Delete"
+          add:          "Add to project"
+          new:          "New Employee"
+      new:
+          title:        "New Employee"
+          legend:       "Enter employee details"
+          back:         "Back"
+      form:
+          name:         "Full name"
+          dob:          "Date of birth"
+          salary:       "Salary"
+          job:          "Job"
+          notes:        "Notes"
+          submit:       "Create"
+      edit:
+          title:        "Editing Employee"
+          legend:       "Enter employee details"
+          back:         "Back"
+          show:         "Show details"
+      show:
+          title:        "Employee Details"
+          name:         "Full name"
+          dob:          "Date of birth"
+          salary:       "Salary"
+          job:          "Job"
+          notes:        "Notes"
+          work_at:      "Currently work at"
+          edit:         "Edit"
+          back:         "Back"
+      add_to_project:
+          save:         "Save"
+          back:         "Back"
+  projects:
+      index:
+          title:        "Listing Projects"
+          name:         "Name"
+          show:         "Show details"
+          new:          "New Project"
+      new:
+          title:        "New project"
+          legend:       "Enter project details"
+          back:         "Back"
+      edit:
+          title:        "Editing project"
+          legend:       "Enter project details"
+          show:         "Show"
+          back:         "Back"
+      show:
+          name:         "Employee name"
+          detail:       "Show details"
+          remove:       "Remove"
+          edit:         "Edit"
+          back:         "Back"
+          add_employee: "Add employee"
+          create_timesheet: "Create timesheet"
+          timesheet_history: "Timesheet history"
+      form:
+          name:         "Name"
+          submit:       "Submit"
+      create_weekly_timesheet:
+          start_date:   "Select start date"
+          submit:       "Create"
+          back:         "Back"
+      add_employee:
+          back:         "Back"
+          new:          "New employee"
+      summary:
+          title:        "Time sheet summary"
+          start_date:   "Start Date"
+          name:         "Name"
+          salary:       "Salary"
+          job:          "Job"
+          timesheet:    "Timesheet"
+          total_salary: "Total salary"
+          total_day:    "Total day"
+          total:        "Total"
+          currency:     "$"
+      form_timesheet:
+          title:        "Time sheet"
+          start_date:   "Start Date"
+          name:         "Name"
+          salary:       "Salary"
+          job:          "Job"
+          timesheet:    "Timesheet"
+          total_salary: "Total salary"
+          total_day:    "Total day"
+          total:        "Total"
+          edit:         "Edit"
+          submit:       "Create"
+          currency:     "$"
+  timesheets:
+       index:
+           title:       "Listing timesheets"
+           title2:      "Timesheets for"
+           search:      "Search"
+           show:        "Show"
+           edit:        "Edit"
+           destroy:     "Remove"
+       edit:
+           title:       "Editing timesheet for"
+           show:        "Show details"
+           back:        "Back"
+       show_summary:
+           back:        "Back"

@@ -1,16 +1,16 @@
 <div id="employee_list">
-	<h1>Listing employees</h1>
+	<h1><%= t('.title') %></h1>
 	<div class="hr1">
 		<hr/>
 	</div>
 	<br/><br/>
 	<table>
   		<tr>
-    		<th>Full name</th>
-    		<th>Date of birth</th>
-    		<th>Salary</th>
-    		<th>Job</th>
-    		<th>Notes</th>
+    		<th><%= t('.name') %></th>
+    		<th><%= t('.dob') %></th>
+    		<th><%= t('.salary') %></th>
+    		<th><%= t('.job') %></th>
+    		<th><%= t('.notes') %></th>
     		<th></th>
   		</tr>
 
@@ -22,11 +22,11 @@
     		<td><%= employee.job %></td>
     		<td><%= employee.notes %></td>
     		<td>
-    			<%= link_to 'Edit', edit_employee_path(employee) %><br/>
-    			<%= link_to 'Destroy', employee, 
+    			<%= link_to t('.edit'), edit_employee_path(employee) %><br/>
+    			<%= link_to t('.destroy'), employee, 
 							:confirm => 'Are you sure?', 
 							:method => :delete %><br/>
-				<%= link_to 'Add to project', addToProject_employee_path(employee) %>
+				<%= link_to t('.add'), add_to_project_employee_path(employee) %>
 			</td>
   		</tr>
 		<% end %>
@@ -34,5 +34,5 @@
 </div>
 <br />
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to t('.new'), new_employee_path %>
 <p><%= will_paginate @employees %></p>

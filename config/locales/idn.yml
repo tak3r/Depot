@@ -18,8 +18,8 @@ idn:
       application:
           home:         "Daftar Proyek"
           employee:     "Daftar karyawan"
-          timesheet:    "Jadwal kerja"
-          edit:         "Perbaiki"
+          timesheet:    "Absensi"
+          edit:         "Ubah"
           destroy:      "Hapus"
   employees:
       index:
@@ -29,7 +29,7 @@ idn:
           salary:       "Upah harian"
           job:          "Pekerjaan"
           notes:        "Keterangan"
-          edit:         "Perbaiki"
+          edit:         "Ubah"
           destroy:      "Hapus"
           add:          "Masukan ke proyek"
           new:          "Karyawan baru"
@@ -43,7 +43,7 @@ idn:
           salary:       "Upah harian"
           job:          "Pekerjaan"
           notes:        "Keterangan"
-          submit:       "Create"
+          submit:       "Submit"
       edit:
           title:        "Ubah Karyawan detail"
           legend:       "Masukan detail karyawan"
@@ -57,8 +57,80 @@ idn:
           job:          "Pekerjaan"
           notes:        "Keterangan"
           work_at:      "Sedang bekerja di"
-          edit:         "Perbaiki"
+          edit:         "Ubah"
           back:         "Kembali"
       add_to_project:
           save:         "Ok"
+          back:         "Kembali"
+  projects:
+      index:
+          title:        "Daftar Proyek"
+          name:         "Nama Proyek"
+          show:         "Tampilkan detail"
+          new:          "Proyek baru"
+      new:
+          title:        "Proyek baru"
+          legend:       "Masukan detail proyek"
+          back:         "Kembali"
+      edit:
+          title:        "Ubah detail proyek"
+          legend:       "Masukan detail proyek"
+          show:         "Tampilkan detail"
+          back:         "Kembali"
+      show:
+          name:         "Nama karyawan"
+          detail:       "Detail karyawan"
+          remove:       "Pindah karyawan"
+          edit:         "Ubah"
+          back:         "Kembali"
+          add_employee: "Tambah karyawan"
+          create_timesheet: "Buat jadwal mingguan"
+          timesheet_history: "Jadwal lama"
+      form:
+          name:         "Nama"
+          submit:       "Submit"
+      create_weekly_timesheet:
+          start_date:   "Tanggal mulai"
+          submit:       "Submit"
+          back:         "Kembali"
+      add_employee:
+          back:         "Kembali"
+          new:          "Karyawan baru"
+      summary:
+          title:        "Absensi"
+          start_date:   "TANGGAL"
+          name:         "NAMA"
+          salary:       "UPAH HARIAN"
+          job:          "PEK"
+          timesheet:    "ABSEN"
+          total_salary: "JUMLAH UPAH"
+          total_day:    "JUMLAH HARI"
+          total:        "TOTAL"
+          currency:     "Rp"
+      form_timesheet:
+          title:        "Absensi"
+          start_date:   "TANGGAL"
+          name:         "NAMA"
+          salary:       "UPAH HARIAN"
+          job:          "PEK"
+          timesheet:    "ABSEN"
+          total_salary: "JUMLAH UPAH"
+          total_day:    "JUMLAH HARI"
+          total:        "TOTAL"
+          edit:         "Perbaiki"
+          submit:       "Submit"
+          currency:     "Rp "
+  timesheets:
+      index:
+          title:        "Daftar absensi"
+          title2:       "Absen untuk"
+          search:       "Cari"
+          show:         "Tampilkan"
+          edit:         "Ubah"
+          destroy:      "Hapus"
+      edit:
+          title:        "Perbaiki absensi for"
+          show:         "Tampilkan detail"
+          back:         "Kembali"
+      show_summary:
           back:         "Kembali"

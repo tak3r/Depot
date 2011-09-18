@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing timesheets</h1>
+<h1><%= t('.title')%></h1>
 
 <div class="hr1">
 	<hr/>
@@ -9,17 +9,18 @@
 
 <%= form_tag('/timesheets') do %>
 	<p>Project name <%= collection_select(:project, :id, Project.all, :id, :name, :prompt => true) %>
-	<%= submit_tag 'Search'%></p>
+	<%= submit_tag t('.search')%></p>
 <% end %>
 
 <% if @timesheets != nil %>
-<h2> Timesheets for <%= link_to @project.name, @project %> </h2>
+<h2> <%= t('.title2')%> <%= link_to @project.name, @project %> </h2>
 <table>
 	<% @timesheets.each do |timesheet| %>
 	<tr>
 		<td><%= timesheet.start_date.strftime("%d %B %Y") %></td>
-		<td><%= link_to 'Show', :action => "show_summary", :id => timesheet.id %> |
-			<%= link_to 'Destroy', timesheet, 
+		<td><%= link_to t('.show'), :action => "show_summary", :id => timesheet.id %> |
+			<%= link_to t('.edit'), edit_timesheet_path(timesheet) %> |
+			<%= link_to t('.destroy'), timesheet, 
 						:confirm => 'Are you sure?', 
 						:method => :delete %>
 		</td>
@@ -27,6 +28,8 @@
 	<% end %>
 </table>
 <% end%>
-
+<% if @timesheets != nil %>
+<p><%= will_paginate @timesheets %></p>
+<% end %>
 <br/><br/>
 

@@ -1,4 +1,4 @@
-<h1>New project</h1>
+<h1><%= t('.title')%></h1>
 <div class="hr1">
 	<hr/>
 </div>
@@ -6,9 +6,9 @@
 
 <div class="depot_form">
 	<fieldset>
-		<legend>Enter employee details</legend>
+		<legend><%= t('.legend')%></legend>
 		<%= render 'form' %>
 	</fieldset>
 </div>
 <br/>
-<%= link_to 'Back', projects_path %>
+<%= link_to t('.back'), projects_path %>

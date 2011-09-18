@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
+    @projects = Project.paginate :page => params[:page], :order => 'name', :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,9 +83,9 @@ class ProjectsController < ApplicationController
     end
   end
   
-  # GET /projects/1/addEmployee
-  def addEmployee
-    @employees = Employee.all
+  # GET /projects/1/add_employee
+  def add_employee
+    @employees = Employee.paginate :page => params[:page], :order => 'name', :per_page => 10
     @project = Project.find(params[:id])
     
     respond_to do |format|
@@ -94,8 +94,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # POST /projects/1/updateEmployee  
-  def updateEmployee
+  # POST /projects/1/update_employee  
+  def update_employee
     @employees = Employee.all
     @project = Project.find(params[:id])
     
@@ -116,8 +116,8 @@ class ProjectsController < ApplicationController
     end
   end
   
-  # POST /projects/1/removeEmployee
-  def removeEmployee
+  # POST /projects/1/remove_employee
+  def remove_employee
     @employee = Employee.find(params[:employee_id])
     @project = Project.find(params[:id])
     

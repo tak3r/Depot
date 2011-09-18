@@ -3,7 +3,7 @@ class TimesheetsController < ApplicationController
   # GET /timesheets.xml
   def index
     if params[:project_id]
-      @timesheets = Timesheet.find_all_by_project_id(params[:project_id])
+      @timesheets = Timesheet.where(:project_id => params[:project_id]).paginate (:page => params[:page], :per_page => 15)
       @project = Project.find(params[:project_id])
     end
     
@@ -39,6 +39,9 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/1/edit
   def edit
     @timesheet = Timesheet.find(params[:id])
+    @project = Project.find(@timesheet.project_id)
+    @start_date = @timesheet.start_date
+    @employees = Employee.find_all_by_project_id(@project.id)
   end
 
   # POST /timesheets
@@ -91,6 +94,41 @@ class TimesheetsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml { render :xml => @summary}
+    end
+  end
+  
+  def update_timesheet
+    @timesheet = Timesheet.find(params[:id])
+    @employees = Employee.find_all_by_project_id(@timesheet.project_id)
+    @start_date = @timesheet.start_date
+    
+    @employees.each do |employee|                                
+      (0..6).each do |n|
+        current_date = @start_date + n
+        if params[employee.id.to_s + ":" + current_date.to_s] == 'selected'
+          # check if the existing work day exist
+          if @timesheet.work_days.find_by_employee_id_and_day(employee.id, current_date) == nil 
+            logger.debug "Created work day for #{employee.name}"
+            work_day = WorkDay.new(:timesheet_id => @timesheet.id,
+                                  :employee_id => employee.id,
+                                  :day => current_date)
+            work_day.save
+          end
+        end
+      end
+    end
+    
+    summary = @timesheet.summary
+    summary.write_cached(@timesheet, Project.find(@timesheet.project_id))
+    
+    respond_to do |format|
+      if @timesheet.update_attributes(params[:timesheet])
+        format.html { redirect_to :action => "show_summary", :id => @timesheet.id, :notice => 'Timesheet was successfully updated.' }
+        format.xml  { render :xml => @timesheet.summary }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end

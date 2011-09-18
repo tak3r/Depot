@@ -106,6 +106,9 @@
 #timesheet input[type=text] {
 	width: 40px;
 	border: 0px;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
 }
 
 .depot_form fieldset{

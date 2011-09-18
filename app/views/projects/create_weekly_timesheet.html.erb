@@ -1,38 +1,3 @@
-<script type="text/javascript">
-	function updateTable(id, salary){
-		var split = id.split(":");
-		var checkbox = document.getElementById(id);
-		
-		var tot_day = document.getElementById(split[0] + ':tot_day');
-		var tot_salary = document.getElementById(split[0] + ':tot_sal');
-		
-		if(checkbox.checked){
-			tot_day.value = parseInt(tot_day.value) + 1;
-		}
-		else{
-			tot_day.value = parseInt(tot_day.value) -1;
-		}
-		
-		// update total salary
-		tot_salary.value = (parseInt(tot_day.value) * parseFloat(salary)).toFixed(2)
-		updateGrandTotal();
-	}
-	
-	function updateGrandTotal() {
-		var tot_salaries = document.getElementsByTagName('input')
-		var grand_total = document.getElementById('grand_total')
-		var total = 0;
-		
-		for(var i = 0; i < tot_salaries.length; i++){
-			if(tot_salaries[i].id.indexOf('tot_sal') != -1) {
-				total += parseFloat(tot_salaries[i].value)
-			}
-		}
-		
-		grand_total.value = total.toFixed(2)
-	}
-</script>
-
 <p id="notice"><%= notice %></p>
 
 <h1> <%= @project.name %> </h1>
@@ -43,79 +8,12 @@
 
 <% if @start_date == nil %>	
 	<%= form_tag('create_timesheet') do %>
-		<p>Select start date</p>
+		<p><%= t('.start_date')%></p>
 		<p><%= date_select('range','start_date', :order => [:day, :month, :year])%></p> <br/>
-		<p><%= submit_tag 'Create'%></p>
+		<p><%= submit_tag t('.submit')%></p>
 	<% end 
 	else %>
-
-	<div id='timesheet'>
-		<h2>Time sheet</h2>
-		<p>Start Date : <%= @start_date.strftime("%d %B %Y") %></p>
-
-		<%= form_tag('created_weekly_timesheet') do %>
-			<%= hidden_field_tag :start_date, @start_date %>
-			<table>
-				<tr>
-					<th class="top">No.</th>
-					<th class="top">Name</th>
-					<th class="top">Job</th>
-					<th colspan='7'>Timesheet</th>
-					<th class="top">Total day</th>
-					<th class="top">Salary</th>
-					<th class="top">Total salary</th>
-				</tr>
-				<tr>
-					<th class="middle"></th>
-					<th class="middle"></th>
-					<th class="middle"></th>
-					<% (0..6).each do |n| 
-						current_date =  @start_date + n %>
-					<th> <%= current_date.strftime("%d")%> </th>
-					<% end %>
-					<th class="middle"></th>
-					<th class="middle"></th>
-					<th class="middle"></th>
-				</tr>
-				<tr>
-					<th class="bottom"></th>
-					<th class="bottom"></th>
-					<th class="bottom"></th>
-					<% (0..6).each do |n| 
-						current_date =  @start_date + n %>
-					<th> <%= current_date.strftime("%a")%> </th>
-					<% end %>
-					<th class="bottom"></th>
-					<th class="bottom"></th>
-					<th class="bottom"></th>
-				</tr>
-				<% counter = 1
-		   		@employees.each do |employee| %>
-				<tr>
-					<td class='center-align'><%= counter %></td>
-					<td><%= employee.name %></td>
-					<td><%= employee.job %></td>
-					<% (0..6).each do |n| 
-						current_date = @start_date + n 
-						checkbox_id = employee.id.to_s + ":" + current_date.to_s %>
-					<td><%= check_box_tag checkbox_id, 'selected', false, { :onchange => "updateTable('" + checkbox_id + "', '" + employee.salary.to_s + "');"} %> 
-					<% end %>
-					<td class='center-align'><%= text_field_tag employee.id.to_s + ":tot_day", 0 , { :readonly => true }%></td>
-					<td class='center-align'><%= number_to_currency(employee.salary) %></td>
-					<td class='center-align'>$<%= text_field_tag employee.id.to_s + ":tot_sal", 0, { :readonly => true }%></td>
-				</tr>
-				<%  counter += 1
-				end %>
-				<tr>
-					<td class='footer' colspan='12' style='text-align:right;'>Total</td>
-					<td class='footer'>$<%= text_field_tag "grand_total", 0, { :readonly => true }%>
-				</tr>
-			</table>
-			<br/>
-			<p><%= submit_tag 'Create'%></p>
-			<% end %>
-		</div>
+		<%= render 'form_timesheet' %>
 	<% end %>
-	<br/>
-
-<%= link_to 'Back', project_path %>
+<br/>
+<%= link_to t('.back'), project_path %>

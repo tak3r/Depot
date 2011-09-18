@@ -1,6 +1,11 @@
-<h1>Editing timesheet</h1>
+<p id="notice"><%= notice %></p>
+<h1><%= t('.title') @project.name %> </h1>
+<div class="hr1">
+	<hr/>
+</div>
+<br/><br/>
 
-<%= render 'form' %>
+<%= render 'projects/form_timesheet' %>
 
-<%= link_to 'Show', @timesheet %> |
-<%= link_to 'Back', timesheets_path %>
+<%= link_to t('.show'), :action => "show_summary", :id => @timesheet.id %>  |
+<%= link_to t('.back'), { :action => 'index', :project_id => @project.id } %>

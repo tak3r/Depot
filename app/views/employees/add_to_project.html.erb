@@ -6,10 +6,10 @@
 </div>
 <br/><br/>
 
-<%= form_tag('updateEmployee') do %>
+<%= form_tag('update_employee') do %>
 	<p><%= collection_select(:employee, :project_id, @projects, :id, :name, :prompt => true) %></p>
-	<p><%= submit_tag 'Save'%></p>
+	<p><%= submit_tag t('.save') %></p>
 <% end %>
 
 <br/><br/>
-<%= link_to 'Back', employee_path %>
+<%= link_to t('.back'), employee_path %>

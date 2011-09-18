@@ -5,13 +5,11 @@
 	<hr/>
 </div>
 <br/><br/>
-<p>
-  Add list of employee here, and some other useful buttons
-</p>
+
 <div id="employee_list">
 	<table>
 		<tr>
-			<th>Employee name </th>
+			<th><%= t('.name')%> </th>
 			<th/>
 		</tr>
 		<% if(@employees != nil)
@@ -21,8 +19,8 @@
 				<%= employee.name %>
 			</td>
 			<td>
-				<%= link_to 'Details', employee %> |
-				<%= link_to 'Remove', :action => 'removeEmployee', :id => @project.id, :employee_id => employee.id %>
+				<%= link_to t('.detail'), employee %> |
+				<%= link_to t('.remove'), :action => 'remove_employee', :id => @project.id, :employee_id => employee.id %>
 			</td>
 		</tr>	
 		<% 		end 
@@ -31,8 +29,8 @@
 </div>
 
 <br/><br/>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %> |
-<%= link_to 'Add employee', addEmployee_project_path(@project) %> |
-<%= link_to 'Create timesheet', create_weekly_timesheet_project_path(@project) %> |
-<%= link_to 'Timesheet history', { :controller => 'timesheets', :action => 'index', :project_id => @project.id } %>
+<%= link_to t('.edit'), edit_project_path(@project) %> |
+<%= link_to t('.back'), projects_path %> |
+<%= link_to t('.add_employee'), add_employee_project_path(@project) %> |
+<%= link_to t('.create_timesheet'), create_weekly_timesheet_project_path(@project) %> |
+<%= link_to t('.timesheet_history'), { :controller => 'timesheets', :action => 'index', :project_id => @project.id } %>

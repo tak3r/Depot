@@ -1,12 +1,12 @@
 <div id="employee_list">
-	<h1>Listing projects</h1>
+	<h1><%= t('.title')%></h1>
 	<div class="hr1">
 	<hr/>
 </div>
 	<br/><br/>
 	<table>
   		<tr>
-    		<th>Name</th>
+    		<th><Name><%= t('.name')%></th>
     		<th></th>
   		</tr>
 
@@ -14,12 +14,12 @@
   		<tr>
     		<td> <%= project.name %></td>
     		<td>
-	    	<%= link_to 'Show details', project %>
+	    	<%= link_to t('.show'), project %>
     		</td>
   		</tr>
 		<% end %>
 	</table>
 </div>
 <br />
-
-<%= link_to 'New Project', new_project_path %>
+<p><%= will_paginate @projects %></p>
+<%= link_to t('.new'), new_project_path %>

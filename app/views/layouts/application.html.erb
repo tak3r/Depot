@@ -13,9 +13,9 @@
 		</div>
 		<div id="main-menu">
 			<ul>
-				<li class ="first"><%= link_to 'Home', projects_path, { :id => 'main-menu1', :accesskey => '1', :title => 'Projects'}%></li>
-				<li><%= link_to 'Employee', employees_path, { :id => 'main-menu2', :accesskey => '2', :title => 'Employee'}%></li>
-				<li><%= link_to 'Timesheets', timesheets_path, { :id => 'main_menu3', :accesskey => '3', :title => 'Timesheet'}%></li>
+				<li class ="first"><%= link_to t('.home'), projects_path, { :id => 'main-menu1', :accesskey => '1', :title => 'Projects'}%></li>
+				<li><%= link_to t('.employee'), employees_path, { :id => 'main-menu2', :accesskey => '2', :title => 'Employee'}%></li>
+				<li><%= link_to t('.timesheet'), timesheets_path, { :id => 'main_menu3', :accesskey => '3', :title => 'Timesheet'}%></li>
 			</ul>
 		</div>
 		<div id="content">

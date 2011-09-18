@@ -1,9 +1,9 @@
 Depot::Application.routes.draw do
   resources :projects do
     member do
-      get 'addEmployee'
-      post 'updateEmployee'
-      get 'removeEmployee'      
+      get 'add_employee'
+      post 'update_employee'
+      get 'remove_employee'      
     end
   end
 
@@ -18,17 +18,19 @@ Depot::Application.routes.draw do
   resources :timesheets do
      member do
        get 'show_summary'
+       post 'update_timesheet'
      end
   end
 
   resources :work_days
-
-  resources :employees do
-    member do
-      get 'addToProject'
-      post 'updateEmployee'
+  
+  scope '(:locale)' do
+    resources :employees do
+      member do
+        get 'add_to_project'
+        post 'update_employee'
+      end
     end
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -86,4 +88,6 @@ Depot::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+  end
 end
