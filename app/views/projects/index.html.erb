@@ -1,25 +1,26 @@
-<div id="employee_list">
-	<h1><%= t('.title')%></h1>
-	<div class="hr1">
-	<hr/>
-</div>
-	<br/><br/>
-	<table>
-  		<tr>
-    		<th><Name><%= t('.name')%></th>
-    		<th></th>
-  		</tr>
+<div class="article">
+	<div id="employee_list">
+		<h2><%= t('.title')%></h2>
+		<div class="clr"></div>
+		<br/><br/>
+		<table>
+  			<tr>
+    			<th><Name><%= t('.name')%></th>
+    			<th></th>
+  			</tr>
 
-		<% @projects.each do |project| %>
-  		<tr>
-    		<td> <%= project.name %></td>
-    		<td>
-	    	<%= link_to t('.show'), project %>
-    		</td>
-  		</tr>
-		<% end %>
-	</table>
+			<% @projects.each do |project| %>
+  			<tr>
+    			<td> <%= project.name %></td>
+    			<td>
+	    			<%= link_to t('.show'), project %>
+    			</td>
+  			</tr>
+			<% end %>
+		</table>
+	</div>
+	<br />
+	<p><%= will_paginate @projects %></p>
+	<p class="spec"><%= link_to t('.new'), new_project_path, { :class => "rm"} %></p>
+	<div class="clr"></div>
 </div>
-<br />
-<p><%= will_paginate @projects %></p>
-<%= link_to t('.new'), new_project_path %>

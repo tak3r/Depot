@@ -18,7 +18,7 @@
 
 
 #employee_list table {
-	width: 640px;
+	width: 540px;
 	margin: 0 22px 0 22px;
 }
 
@@ -101,6 +101,7 @@
 	text-align: center;
 	border-top: 2px solid #608B9F;
 	border-bottom: 2px solid #608B9F;
+	background-color: transparent;
 }
 
 #timesheet input[type=text] {
