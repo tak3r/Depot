@@ -25,12 +25,12 @@
 #employee_list table tr th {
 	padding: 5px;
 	text-align: center;
-	border-top: 1px solid #608B9F;
-	border-bottom: 2px solid #608B9F;
+	border-top: 1px solid #0A83C0;
+	border-bottom: 2px solid #0A83C0;
 }
 
 #employee_list table tr td {
-	border-bottom: 1px dashed #608B9F;
+	border-bottom: 1px dashed #0A83C0;
 }
 
 #employee_details table {
@@ -46,7 +46,7 @@
 }
 
 #employee_details table tr.odd td {
-	background:#EBF5FA; /*F7fBFF;*/
+	background:#929292; /*F7fBFF;*/
 }
 
 #employee_details table tr.odd .column1 {
@@ -65,14 +65,14 @@
 #timesheet table tr th {
 	padding: 5px;
 	text-align: center;
-	border-top: 1px solid #608B9F;
-	border-bottom: 2px solid #608B9F;
+	border-top: 1px solid #0A83C0;
+	border-bottom: 2px solid #0A83C0;
 }
 
 #timesheet table tr th.top {
 	padding: 5px;
 	text-align: center;
-	border-top: 1px solid #608B9F;
+	border-top: 1px solid #0A83C0;
 	border-bottom: 0px;
 }
 
@@ -86,11 +86,11 @@
 	padding: 5px;
 	text-align: center;
 	border-top: 0px;
-	border-bottom: 2px solid #608B9F;
+	border-bottom: 2px solid #0A83C0;
 }
 
 #timesheet table tr td {
-	border-bottom: 1px dashed #608B9F;
+	border-bottom: 1px dashed #0A83C0;
 }
 
 #timesheet table tr td.center-align {
@@ -99,8 +99,8 @@
 
 #timesheet table tr td.footer {
 	text-align: center;
-	border-top: 2px solid #608B9F;
-	border-bottom: 2px solid #608B9F;
+	border-top: 2px solid #0A83C0;
+	border-bottom: 2px solid #0A83C0;
 	background-color: transparent;
 }
 
@@ -113,18 +113,18 @@
 }
 
 .depot_form fieldset{
-	background:#EBF5FA;
+	background: transparent;
 }
 
 .depot_form legend{
-	color: #DFD;
-	background: #608B9F;
+	color: #FFFFFF;
+	background: #0A83C0;
 	font-family: sans-serif;
 	padding: 0.2em 1em;
 }
 
 .depot_form label{
-	width: 5em;
+	width: 8em;
 	float: left;
 	text-align: right;
 	padding-top: 0.2em;

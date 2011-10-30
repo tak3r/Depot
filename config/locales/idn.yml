@@ -124,6 +124,7 @@ idn:
       index:
           title:        "Daftar absensi"
           title2:       "Absen untuk"
+          date:         "Tanggal"
           search:       "Cari"
           show:         "Tampilkan"
           edit:         "Ubah"

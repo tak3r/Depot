@@ -126,6 +126,7 @@ en:
        index:
            title:       "Listing timesheets"
            title2:      "Timesheets for"
+           date:        "Date"
            search:      "Search"
            show:        "Show"
            edit:        "Edit"

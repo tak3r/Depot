@@ -13,20 +13,30 @@
 <% end %>
 
 <% if @timesheets != nil %>
+
 <h2> <%= t('.title2')%> <%= link_to @project.name, @project %> </h2>
-<table>
-	<% @timesheets.each do |timesheet| %>
-	<tr>
-		<td><%= timesheet.start_date.strftime("%d %B %Y") %></td>
-		<td><%= link_to t('.show'), :action => "show_summary", :id => timesheet.id %> |
-			<%= link_to t('.edit'), edit_timesheet_path(timesheet) %> |
-			<%= link_to t('.destroy'), timesheet, 
-						:confirm => 'Are you sure?', 
-						:method => :delete %>
-		</td>
-	</tr>
-	<% end %>
-</table>
+<div class="clr"></div>
+<br/><br/>
+
+<div id="employee_list">
+	<table>
+		<tr>
+			<th><%= t('.date')%></th>
+			<th></th>
+		</tr>
+		<% @timesheets.each do |timesheet| %>
+		<tr>
+			<td><%= timesheet.start_date.strftime("%d %B %Y") %></td>
+			<td><%= link_to t('.show'), :action => "show_summary", :id => timesheet.id %> |
+				<%= link_to t('.edit'), edit_timesheet_path(timesheet) %> |
+				<%= link_to t('.destroy'), timesheet, 
+							:confirm => 'Are you sure?', 
+							:method => :delete %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
 <% end%>
 <% if @timesheets != nil %>
 <p><%= will_paginate @timesheets %></p>

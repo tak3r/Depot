@@ -29,8 +29,8 @@
 </div>
 
 <br/><br/>
-<%= link_to t('.edit'), edit_project_path(@project) %> |
 <%= link_to t('.back'), projects_path %> |
+<%= link_to t('.edit'), edit_project_path(@project) %> |
 <%= link_to t('.add_employee'), add_employee_project_path(@project) %> |
 <%= link_to t('.create_timesheet'), create_weekly_timesheet_project_path(@project) %> |
 <%= link_to t('.timesheet_history'), { :controller => 'timesheets', :action => 'index', :project_id => @project.id } %>

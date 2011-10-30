@@ -281,6 +281,22 @@ p.infopost a {
 	text-align:center;
 	background:url(../images/readmore.jpg) no-repeat center top;
 }
+
+.content .mainbar a.lm {
+	float:left;
+	margin:0 0 16px;
+	padding:10px 0 0;
+	width:auto;
+	height:20px;
+	font-size:13px;
+	line-height:18px;
+	font-weight:normal;
+	text-transform:none;
+	color:#fff;
+	text-decoration:none;
+	text-align:center;
+	background:url(../images/readmore.jpg) no-repeat center top;
+}
 .content p.pages {
 	margin:0;
 	padding:24px 0;
